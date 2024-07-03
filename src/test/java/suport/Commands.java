@@ -27,9 +27,7 @@ public class Commands extends RunCucumberTest {
             waitElementClickable(element, 4000);
             getDriver().findElement(element).click();
             System.out.println("Clicou no elemento");
-
         }catch(Exception error){
-
             System.out.println("Aconteceu um erro ao tentar clicar no elemento: " + element);
             new Exception(error);
         }
@@ -40,15 +38,12 @@ public class Commands extends RunCucumberTest {
 
     public static void fillField(By element, String senha){
         System.out.println("---------------------------------------");
-
         try{
             System.out.println("Vai tentar preencher o elemento: " + element);
             waitElementVisible(element, 5000);
             getDriver().findElement(element).sendKeys(senha);
             System.out.println("Preencheu o campo!");
-
         }catch(Exception error){
-
             System.out.println("Aconteceu um erro ao tentar preencher o elemento: " + element);
             new Exception(error);
         }
@@ -57,12 +52,10 @@ public class Commands extends RunCucumberTest {
     }
 
     public static void verifyMessage(By element, String message){
-
         Commands.waitElementVisible(element,3);
         WebElement mensagemEmail = getDriver().findElement(element);
         String textoMensagem = mensagemEmail.getText();
         Assert.assertEquals(textoMensagem,message);
-
     }
 
 }
