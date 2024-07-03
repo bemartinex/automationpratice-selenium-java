@@ -16,7 +16,7 @@ public class RegisterPage extends Commands {
     private static By mensagemErroPreencherCampo = By.id("errorMessageFirstName");
 
     public static void acessarTelaCadastro(){
-        getDriver().get("https://automationpratice.com.br/");
+        getDriver("chrome").get("https://automationpratice.com.br/");
         Assert.assertEquals("Não acessou a aplicação",true,getDriver().findElement(By.id("footer_one")).isDisplayed());
         getDriver().findElement(By.xpath("//a[@href='/register']")).click();
     }

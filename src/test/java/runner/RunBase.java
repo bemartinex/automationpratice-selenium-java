@@ -2,30 +2,33 @@ package runner;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class RunBase {
 
     static WebDriver driver;
 
-    public enum Browser {CHROME}
 
     public static WebDriver getDriver() {
-        if(driver == null) {
-            return getDriver(Browser.CHROME);
-        }else{
             return driver;
-        }
     }
-    public static WebDriver getDriver(Browser browser) {
+    public static WebDriver getDriver(String browser) {
 
         if(driver != null) {
             driver.quit();
         }
 
         switch (browser) {
-            case CHROME:
+            case "chrome":
                 driver = new ChromeDriver();
                 break;
+            //rodar navegador em headless
+            case "chrome-ci":
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                driver = new ChromeDriver(chromeOptions);
+                break;
+
             default:
                 throw new IllegalArgumentException("Invalid browser: " + browser);
         }

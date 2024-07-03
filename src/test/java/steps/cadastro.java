@@ -12,7 +12,6 @@ public class cadastro extends RunCucumberTest {
 
     @Dado("^que estou na tela de cadastro do site automation pratice$")
     public void acessar_tela_cadastro(){
-        getDriver(RunBase.Browser.CHROME);
         RegisterPage.acessarTelaCadastro();
     }
 
