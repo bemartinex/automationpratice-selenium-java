@@ -1,9 +1,12 @@
 package steps;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Quando;
 import pages.RegisterPage;
 import runner.RunBase;
 import runner.RunCucumberTest;
+import suport.ScreenshotUtils;
 
 public class cadastro extends RunCucumberTest {
 
@@ -33,6 +36,22 @@ public class cadastro extends RunCucumberTest {
     @Quando("^exibe a mensagem \"([^\"]*)\" de campo nao preenchido$")
     public void mensagem_erro_preencher_campo(String mensagem){
         RegisterPage.mensagemErroPreencherCampo(mensagem);
+    }
+
+
+    @After
+    public static void afterScenario(Scenario scenario) {
+        System.out.println("=========================");
+        System.out.println("Teste executado:" + scenario.getName());
+        System.out.println("Status: " + scenario.getStatus());
+        System.out.println("Tag: " + scenario.getSourceTagNames());
+        System.out.println("=========================");
+
+        if(scenario.isFailed()){
+            ScreenshotUtils.addScreenshotOnScenario(scenario);
+        }
+
+
     }
 
 

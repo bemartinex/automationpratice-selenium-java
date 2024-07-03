@@ -4,6 +4,7 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.WebDriver;
 
 
 @RunWith(Cucumber.class)
@@ -22,3 +23,4 @@ import org.junit.runner.RunWith;
     }
 
 }
+
