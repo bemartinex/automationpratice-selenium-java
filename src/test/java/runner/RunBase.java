@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.concurrent.TimeUnit;
+
 public class RunBase {
 
     static WebDriver driver;
@@ -32,6 +34,11 @@ public class RunBase {
             default:
                 throw new IllegalArgumentException("Invalid browser: " + browser);
         }
+
+        if(driver != null) {
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+        }
+
         return driver;
     }
 
