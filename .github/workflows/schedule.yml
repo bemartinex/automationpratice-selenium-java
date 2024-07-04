@@ -28,9 +28,6 @@ jobs:
           chromedriver-version: '88.0.4324.96'
       - run: chromedriver --url-base=/wd/hub &
 
-      - name: Limpar e instalar dependências
-        run: mvn clean install
-
       - name: Executar Testes
         run: mvn -X test -DfailIfNoTests=false
 
@@ -38,12 +35,6 @@ jobs:
         if: always()
         run: mvn cluecumber-report:reporting
 
-      - name: Arquivar relatórios de teste
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: surefire-reports
-          path: '**/target/surefire-reports/'
 
       - name: Arquivar relatório formatado
         if: always()
