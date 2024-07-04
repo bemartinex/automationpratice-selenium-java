@@ -30,7 +30,7 @@ jobs:
       - run: chromedriver --url-base=/wd/hub &
 
       - name: Run Test
-        run: mvn test -Dtest-RunCucumber -Dbrowser-chrome-ci
+        run: mvn -X test -Dtest=RunCucumber -Dbrowser=chrome-ci
 
       - name: Gerar relatório
         if: always()
